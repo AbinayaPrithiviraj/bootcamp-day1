@@ -1,11 +1,13 @@
 package org.example;
 
+import java.math.BigInteger;
+
 public class Rectangle {
 
-    public Integer computeArea(int length, int breadth) {
+    public BigInteger computeArea(int length, int breadth) {
         if(length < 0 || breadth < 0){
             throw new NumberFormatException("Positive Number are allowed");
         }
-        return length*breadth;
+        return BigInteger.valueOf(length*breadth);
     }
 }
