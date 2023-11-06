@@ -3,10 +3,11 @@ package org.example;
 import java.math.BigInteger;
 
 public class Rectangle {
+    public static final String POSTIVE_NUM_EXCEPTION = "Positive Number are allowed";
 
-    public BigInteger computeArea(int length, int breadth) {
+    public BigInteger calculateArea(int length, int breadth) {
         if(length < 0 || breadth < 0){
-            throw new NumberFormatException("Positive Number are allowed");
+            throw new NumberFormatException(POSTIVE_NUM_EXCEPTION);
         }
         return BigInteger.valueOf(length*breadth);
     }
