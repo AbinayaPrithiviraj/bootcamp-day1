@@ -9,23 +9,33 @@ import java.math.BigInteger;
 public class RectangleTest {
 
     @Test
-    void shouldCalculateAreaOfARectangle(){
-        Rectangle rectangle = new Rectangle();
-        BigInteger area = rectangle.computeArea(3,5);
-        assertEquals(15,area.longValue());
-    }
-    @Test
-    void shouldThownExceptionOnNegativeNumber(){
-        Rectangle rectangle = new Rectangle();
+    void shouldInitializeARectangleWithNegativeValue_thenThownNumberFormatException(){
         Exception exception = assertThrows(NumberFormatException.class, () -> 
-                                                rectangle.computeArea(-3,5));
-        assertEquals("Positive Number are allowed", exception.getMessage());
+                                                new Rectangle(-2,3));
+        assertEquals(Rectangle.POSTIVE_NUM_EXCEPTION, exception.getMessage());
     }
-
     @Test
-    void shouldCalculateAreaOfARectangleResultExceedsTheIntegerRange(){
-        Rectangle rectangle = new Rectangle();
-        BigInteger area = rectangle.computeArea(2147483647,2147483647);
+    void shouldCalculateAreaOfARectangle_thenAssetArea(){
+        Rectangle rectangle = new Rectangle(2,3);
+        BigInteger area = rectangle.calculateArea();
+        assertEquals(6,area.longValue());
+    }
+    @Test
+    void shouldCalculateAreaOfARectangle_thenResultExceedsTheIntegerRange(){
+        Rectangle rectangle = new Rectangle(2147483647,2147483647);
+        BigInteger area = rectangle.calculateArea();
         assertEquals(2147483647*2147483647,area.longValue());
+    }
+    @Test
+    void shouldCalucaltePerimeterOfARectangle_thenAssetPerimeter(){
+        Rectangle rectangle = new Rectangle(2,3);
+        BigInteger perimeter = rectangle.calculatePerimeter();
+        assertEquals(10, perimeter.longValue());
+    }
+    @Test
+    void shouldCalucaltePerimeterOfARectangle_thenResultExceedsTheIntegerRange(){
+        Rectangle rectangle = new Rectangle(2147483647,2147483647);
+        BigInteger perimeter = rectangle.calculatePerimeter();
+        assertEquals(2*(2147483647+2147483647),perimeter.longValue());
     }
 }
