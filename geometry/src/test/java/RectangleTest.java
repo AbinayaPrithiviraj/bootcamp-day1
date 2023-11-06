@@ -9,16 +9,16 @@ import java.math.BigInteger;
 public class RectangleTest {
 
     @Test
+    void shouldInitializeARectangleWithNegativeValue_thenThownNumberFormatException(){
+        Exception exception = assertThrows(NumberFormatException.class, () -> 
+                                                new Rectangle(-2,3));
+        assertEquals(Rectangle.POSTIVE_NUM_EXCEPTION, exception.getMessage());
+    }
+    @Test
     void shouldCalculateAreaOfARectangle_thenAssetArea(){
         Rectangle rectangle = new Rectangle(2,3);
         BigInteger area = rectangle.calculateArea();
         assertEquals(6,area.longValue());
-    }
-    @Test
-    void shouldCalculateAreaOfARectangle_thenThownExceptionOnNegativeNumber(){
-        Exception exception = assertThrows(NumberFormatException.class, () -> 
-                                                new Rectangle(-2,3));
-        assertEquals(Rectangle.POSTIVE_NUM_EXCEPTION, exception.getMessage());
     }
     @Test
     void shouldCalculateAreaOfARectangle_thenResultExceedsTheIntegerRange(){
