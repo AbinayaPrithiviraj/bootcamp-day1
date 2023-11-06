@@ -1,7 +1,7 @@
 package org.example;
 import java.math.BigInteger;
 
-public class Square extends Shape{
+public class Square extends Quadrilateral{
     private final int side;
 
     public Square(int side) {

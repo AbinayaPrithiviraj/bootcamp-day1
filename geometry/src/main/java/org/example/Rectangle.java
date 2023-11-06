@@ -2,7 +2,7 @@ package org.example;
 
 import java.math.BigInteger;
 
-public class Rectangle extends Shape {    
+public class Rectangle extends Quadrilateral {    
     private final int length;
     private final int breadth;
 
